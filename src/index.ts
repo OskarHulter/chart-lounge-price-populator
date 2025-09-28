@@ -47,17 +47,17 @@ export class PopulatePriceHistory extends WorkflowEntrypoint<Env, Params> {
     // You can optionally have a Workflow wait for additional data,
     // human approval or an external webhook or HTTP request, before progressing.
     // You can submit data via HTTP POST to /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{eventName}
-    // const waitForApproval = await step.waitForEvent("request-approval", {
-    //   type: "approval", // define an optional key to switch on
-    //   timeout: "1 minute", // keep it short for the example!
-    // });
+    const waitForApproval = await step.waitForEvent("request-approval", {
+      type: "approval", // define an optional key to switch on
+      timeout: "1 minute", // keep it short for the example!
+    });
 
     const apiResponse = await step.do("fetch the asset price", async () => {
       if (asset.tickers.length === 0) {
         throw new Error("No tickers to process");
       }
-
-      let resp = await fetch("https://api.cloudflare.com/client/v4/ips");
+      const url = `${this.env.ALPHA_VANTAGE_BASE_URL}/query?function=TIME_SERIES_DAILY&symbol=${asset.tickers[0]}&apikey=${this.env.ALPHA_VANTAGE_ACCESS_KEY}`;
+      let resp = await fetch(url);
       return await resp.json<any>();
     });
 
