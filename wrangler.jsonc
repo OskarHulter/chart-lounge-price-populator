@@ -42,9 +42,9 @@
 	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
 	"workflows": [
 		{
-			"name": "workflows-hello-world",
-			"binding": "MY_WORKFLOW",
-			"class_name": "MyWorkflow"
+			"name": "populate-price-history",
+			"binding": "POPULATE_PRICE_HISTORY",
+			"class_name": "PopulatePriceHistory"
 		}
 	]
 }
