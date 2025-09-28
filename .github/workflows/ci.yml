@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  ci:
+    name: "CI"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v4"
+      - uses: "moonrepo/setup-toolchain@v0"
+        with:
+          auto-install: true
+      - name: "Install dependencies"
+        run: "npm install"
+      - name: "Run dev server"
+        run: "npm run start"
+      - name: "shut down dev server"
+        run: "npx kill-port 8787"

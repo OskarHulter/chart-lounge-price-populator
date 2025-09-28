@@ -1,15 +1,19 @@
 {
-	"name": "chart-lounge-price-populator",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"deploy": "wrangler deploy",
-		"start": "wrangler dev",
-		"dev": "wrangler dev",
-		"cf-typegen": "wrangler types"
-	},
-	"devDependencies": {
-		"typescript": "^5.0.4",
-		"wrangler": "^4.40.2"
-	}
+  "name": "chart-lounge-price-populator",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "start": "wrangler dev",
+    "dev": "wrangler dev",
+    "cf-typegen": "wrangler types"
+  },
+  "engines": {
+    "node": "24.8.0",
+    "npm": "11.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4",
+    "wrangler": "^4.40.2"
+  }
 }
